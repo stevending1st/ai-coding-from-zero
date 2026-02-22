@@ -1,6 +1,8 @@
-# Starlight Docs Project
+# AI Coding from Zero
 
 This repository uses [Astro](https://docs.astro.build/) + [Starlight](https://starlight.astro.build/) and `pnpm`.
+Repository: https://github.com/stevending1st/ai-coding-from-zero
+Production URL: https://stevending1st.github.io/ai-coding-from-zero
 
 ## Requirements
 
@@ -54,8 +56,8 @@ In GitHub repository settings, set Pages source to `GitHub Actions`.
 
 `astro.config.mjs` reads:
 
-- `SITE_URL` (default: `https://example.com`)
-- `BASE_PATH` (default: `/`)
+- `SITE_URL` (default: `https://stevending1st.github.io`)
+- `BASE_PATH` (default: `/ai-coding-from-zero` in production, `/` in development)
 
-The GitHub Actions workflow sets both automatically for project pages and user pages.
+The GitHub Actions workflow sets these values to match the project page.
 For other platforms, set these environment variables in your build environment.

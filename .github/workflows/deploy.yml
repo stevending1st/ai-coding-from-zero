@@ -36,21 +36,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Compute base path
-        id: basepath
-        run: |
-          REPO="${GITHUB_REPOSITORY#*/}"
-          OWNER="${GITHUB_REPOSITORY%%/*}"
-          if [ "${REPO,,}" = "${OWNER,,}.github.io" ]; then
-            echo "value=/" >> "$GITHUB_OUTPUT"
-          else
-            echo "value=/$REPO" >> "$GITHUB_OUTPUT"
-          fi
-
       - name: Build site
         env:
-          SITE_URL: https://${{ github.repository_owner }}.github.io
-          BASE_PATH: ${{ steps.basepath.outputs.value }}
+          SITE_URL: https://stevending1st.github.io
+          BASE_PATH: /ai-coding-from-zero
         run: pnpm build
 
       - name: Upload artifact
