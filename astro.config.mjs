@@ -21,7 +21,8 @@ export default defineConfig({
 					label: 'Guides',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						'guides/first-application'
+						'guides/first-application',
+						'guides/discovering-needs',
 					],
 				},
 				{
