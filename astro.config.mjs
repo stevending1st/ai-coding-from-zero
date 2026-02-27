@@ -23,6 +23,7 @@ export default defineConfig({
 						// Each item here is one entry in the navigation menu.
 						'guides/first-application',
 						'guides/discovering-needs',
+						'guides/software-architecture',
 					],
 				},
 				{
