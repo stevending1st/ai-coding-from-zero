@@ -24,6 +24,7 @@ export default defineConfig({
 						'guides/first-application',
 						'guides/discovering-needs',
 						'guides/software-architecture',
+						'guides/application-form',
 					],
 				},
 				{
