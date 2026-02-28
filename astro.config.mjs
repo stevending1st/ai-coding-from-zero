@@ -27,10 +27,6 @@ export default defineConfig({
 						'guides/application-form',
 					],
 				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
 			],
 		}),
 	],
