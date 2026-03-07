@@ -25,6 +25,7 @@ export default defineConfig({
 						'guides/discovering-needs',
 						'guides/software-architecture',
 						'guides/application-form',
+						'guides/introduction-to-programming-languages',
 					],
 				},
 			],
