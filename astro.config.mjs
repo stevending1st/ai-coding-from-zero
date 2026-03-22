@@ -2,6 +2,9 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 // https://astro.build/config
 const site = process.env.SITE_URL ?? 'https://stevending1st.github.io';
 const base = process.env.BASE_PATH ?? (process.env.NODE_ENV === 'production' ? '/ai-coding-from-zero' : '/');
@@ -11,6 +14,12 @@ const docsEditBase = `${repository}/edit/main/src/content/docs/`;
 export default defineConfig({
 	site,
 	base,
+
+	markdown: {
+		remarkPlugins: [remarkMath],  // 新增
+		rehypePlugins: [rehypeKatex]  // 新增
+	},
+
 	integrations: [
 		starlight({
 			title: 'AI Coding from Zero',
@@ -26,6 +35,7 @@ export default defineConfig({
 						'guides/software-architecture',
 						'guides/application-form',
 						'guides/introduction-to-programming-languages',
+						'guides/introduction-to-simple-code-reuse-techniques',
 					],
 				},
 			],

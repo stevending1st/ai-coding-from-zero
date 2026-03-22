@@ -1,0 +1,533 @@
+---
+title: 简单的代码复用技术简介
+description: 介绍一下简单的代码复用技术：函数、类、模块、包、库和框架。
+---
+
+import "katex/dist/katex.min.css";
+
+import { Aside } from '@astrojs/starlight/components';
+import { Code } from '@astrojs/starlight/components';
+import { FileTree } from '@astrojs/starlight/components';
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+## 代码复用
+
+前面我们介绍了编程语言，现在我们再来谈谈代码层面的问题——**代码复用**。
+
+当编写程序时，如果同一个功能需要被多次使用，而我们每次都复制相同的代码，一方面会导致代码量迅速膨胀，另一方面在后续修改时也更容易出现遗漏或错误。
+
+一个功能被使用了 3 次，假设每次修改出错的概率为 10%，那么需要修改 3 处代码时，至少出现一次错误的概率可以近似表示为： $1 - (1 - 10\%)^3 \approx 0.271$，（这里假设每次修改出错相互独立，仅用于说明趋势，实际情况可能更复杂）。而如果我们通过代码复用，将该功能集中在一个地方实现，只需要修改一次，那么出错概率就是 0.1，大大降低了风险。
+
+“代码复用”指的是通过函数、类、模块等方式，将重复的逻辑 **抽象** 出来，从而在多个地方复用同一份代码。
+
+<Aside type="note">
+**抽象**（**Abstraction**）：从具体事物中提取出共性特征，忽略不重要的细节，从而形成更通用表示的过程。
+
+**代码复用**（**Code Reuse**）：代码复用是指将已有的代码通过抽象与封装，在多个地方或多个项目中重复使用，从而避免重复开发的一种软件设计方法。
+</Aside>
+
+理想情况下，每一项功能只编写一次，避免重复代码。这一原则被称为 **“一次且仅一次”（Once and Only Once）**，也与 **“Don't Repeat Yourself”**（**不要重复你自己**，简称 **DRY**）原则一致。
+
+<Aside type="note">
+**一次且仅一次**（**Once and Only Once**）：一次且仅一次是指在代码中，每一项功能或逻辑应只在一个地方实现一次，而不应在多个位置重复出现。
+
+**不要重复你自己**（**Don't Repeat Yourself**，简称 **DRY**）是指在软件系统中，每一项知识或逻辑应在系统中有且只有一个明确、一致的表示。
+</Aside>
+
+需要注意的是，DRY 的核心是避免逻辑上的重复，而不是机械地消除所有形式上的重复。
+
+代码复用不仅是减少重复代码，更是通过合理的抽象与组织，使代码更易维护、扩展和理解。
+
+## 函数
+
+**函数** 是最基础的代码组织和复用方式之一，它可以将一段逻辑封装起来，在需要时重复调用。
+
+<Aside type="note">
+**函数**（**Function**）：函数是将一段可复用的逻辑封装起来的代码单元，它可以接收输入（参数），并返回结果。
+</Aside>
+
+我们最早接触的是数学中的函数概念，例如：$y=2x-1$ 也可以写成 $f(x)=2x-1$，$x$ 是自变量，$y$(或 $f(x)$) 是因变量。当我们定义了这个函数后，表达式 $a=3 \times (2x-1)$ 可以写成 $a=3f(x)$。
+
+在编程中也是类似的，我们可以把一段需要重复执行的逻辑封装到函数中。函数可以接收输入（参数），并返回结果。在需要使用该逻辑时，只需调用函数即可。
+
+例如：
+
+<Tabs>
+<TabItem label="Python">
+```python
+def f(x):
+    return 2 * x - 1
+
+a = 3 * f(5)
+
+print(a)
+``` 
+</TabItem>
+
+<TabItem label="C">
+```c
+#include <stdio.h>
+
+int f(int x) {
+    return 2 * x - 1;
+}
+
+int main() {
+    int a = 3 * f(5);
+    printf("%d\n", a);
+    return 0;
+}
+``` 
+</TabItem>
+
+<TabItem label="TypeScript">
+```ts
+function f(x: number): number {
+    return 2 * x - 1;
+}
+
+const a: number = 3 * f(5);
+
+console.log(a);
+``` 
+</TabItem>
+</Tabs>
+
+## 类
+
+在数学中，我们通常只关注“计算过程”，例如函数 $f(x)=2x-1$，输入一个值就可以得到结果。但在现实问题中，我们往往需要描述一个 **“对象”**，例如一只狗，它不仅有数据（名字、年龄），还有行为（吃东西、叫）。
+
+<Aside type="note">
+**对象**（**Object**）：对象是类的一个具体实例，表示现实世界中的一个具体事物，它包含数据（属性）和行为（方法）。
+</Aside>
+
+这类“数据 + 行为”的组合，如果只用函数来表示，这些数据和行为通常会分散在不同函数中，难以表达“数据与行为之间的关联关系”，也不利于建模现实世界中的对象，而 **类** 可以把它们组织在一起。
+
+<Aside type="note">
+**类**（**Class**）：类是对一类具有相同属性和行为的对象的抽象描述，它定义了对象的结构和行为。
+</Aside>
+
+在编程中，类用于描述一类对象。类中可以定义：
+- **属性**：用于保存对象的状态（如名字、年龄）
+- **方法**：用于定义对象的行为（如吃东西）
+
+<Aside type="note">
+**属性**（**Attribute**）：用于描述对象状态的数据，是对象所具有的特征或信息。
+
+**方法**（**Method**）：定义在类中的函数，用于描述对象的行为。
+</Aside>
+
+我们可以根据类创建具体的对象，然后通过对象来访问它的属性和方法。
+
+例如：
+
+<Tabs>
+<TabItem label="Python">
+```python
+class Dog:
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self._age = age  # 用单下划线表示“私有”（约定）
+
+    def get_age(self) -> int:
+        return self._age
+
+    def eat(self, food: str) -> None:
+        print(f"{self.name}吃了{food}")
+
+lucky_dog = Dog("Lucky", 3)
+
+print(f"小狗的名字：{lucky_dog.name}，它 {lucky_dog.get_age()} 岁了")
+
+lucky_dog.eat("骨头")
+``` 
+</TabItem>
+
+<TabItem label="C">
+C 语言没有类的概念，通常使用 struct 和函数来模拟“对象”和“方法”的效果。
+
+```c
+#include <stdio.h>
+
+typedef struct {
+    char* name;
+    int age;  // 约定为“私有”（通过函数访问）
+} Dog;
+
+// 构造函数（初始化）
+Dog create_dog(char* name, int age) {
+    Dog d;
+    d.name = name;
+    d.age = age;
+    return d;
+}
+
+// 方法：获取年龄
+int get_age(Dog* d) {
+    return d->age;
+}
+
+// 方法：吃东西
+void eat(Dog* d, char* food) {
+    printf("%s吃了%s\n", d->name, food);
+}
+
+int main() {
+    Dog lucky_dog = create_dog("Lucky", 3);
+
+    printf("小狗的名字：%s，它 %d 岁了\n", lucky_dog.name, get_age(&lucky_dog));
+
+    eat(&lucky_dog, "骨头");
+
+    return 0;
+}
+```
+</TabItem>
+
+<TabItem label="TypeScript">
+```ts
+class Dog {
+  public name: string;
+  private age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  getAge() {
+    return this.age;
+  }
+
+  eat(food: string) {
+    console.log(`${this.name}吃了${food}`);
+  }
+}
+
+const luckyDog = new Dog("Lucky", 3);
+
+console.log(`小狗的名字：${luckyDog.name}，它 ${luckyDog.getAge()} 岁了`);
+
+luckyDog.eat("骨头");
+``` 
+</TabItem>
+</Tabs>
+
+## 模块
+
+函数和类主要用于实现代码复用，但在实际开发中，还需要进一步考虑如何对这些函数和类进行组织和管理。
+
+通常使用 **模块** 来解决代码组织问题。在多数编程语言中，一个文件通常对应一个模块，可以将功能相近的函数或类放在同一个模块中。
+
+<Aside type="note">
+**模块**（**Module**）：将相关代码（如函数、类等）组织在一起的基本单位，通常以一个文件的形式存在。
+</Aside>
+
+模块不仅仅是将代码按功能拆分到不同文件中，还提供了 **命名空间** 隔离的作用。
+
+<Aside type="note">
+**命名空间**（**Namespace**）：用于组织和区分标识符（如变量、函数、类等）名称的作用域，以避免命名冲突。
+</Aside>
+
+不同模块中的函数或类可以使用相同的名称而不会发生冲突。如果缺乏模块划分，大量代码可能集中在同一全局作用域中，从而导致命名冲突或被覆盖的问题。
+
+模块是组织代码的基本单位，它通过对功能进行分组，并提供命名空间隔离，使代码结构更加清晰且易于维护。
+
+{/* TODO: 下面的示例对空间隔离没有说明 */}
+
+<Tabs>
+<TabItem label="Python">
+<FileTree>
+- dog.py
+- main.py
+- math_utils.py
+</FileTree>
+
+```python
+# math_utils.py
+
+def add(a: int, b: int) -> int:
+    return a + b
+```
+
+```python
+# dog.py
+class Dog:
+    def __init__(self, name: str, age: int):
+        self.name = name
+        self._age = age  # 用单下划线表示“私有”（约定）
+
+    def get_age(self) -> int:
+        return self._age
+
+    def eat(self, food: str) -> None:
+        print(f"{self.name}吃了{food}")
+``` 
+
+```python
+# main.py
+
+from dog import Dog
+import math_utils
+
+lucky_dog = Dog("Lucky", 3)
+
+print(f"小狗的名字：{lucky_dog.name}，它 {lucky_dog.get_age()} 岁了")
+
+lucky_dog.eat("骨头")
+
+print(math_utils.add(1, 2))
+```
+</TabItem>
+
+<TabItem label="C">
+<FileTree>
+- dog.h
+- dog.c
+- math_utils.h
+- math_utils.c
+- main.c
+</FileTree>
+
+```c
+// math_utils.h
+#ifndef MATH_UTILS_H
+#define MATH_UTILS_H
+
+int add(int a, int b);
+
+#endif
+```
+
+```c
+// math_utils.c
+#include "math_utils.h"
+
+int add(int a, int b) {
+    return a + b;
+}
+```
+
+```c
+// dog.h
+#ifndef DOG_H
+#define DOG_H
+
+// 定义 Dog 结构体
+typedef struct {
+    char *name;
+    int _age;
+} Dog;
+
+// 构造函数（初始化）
+void dog_init(Dog *dog, const char *name, int age);
+
+// 方法：获取年龄
+int dog_get_age(const Dog *dog);
+
+// 方法：吃东西
+void dog_eat(Dog *dog, const char *food);
+
+#endif
+```
+
+```c
+// dog.c
+#include <stdio.h>
+#include "dog.h"
+
+void dog_init(Dog *dog, const char *name, int age) {
+    if (dog == NULL || name == NULL) return;
+    dog->name = (char *)name;
+    dog->_age = age;
+}
+
+int dog_get_age(const Dog *dog) {
+    if (dog == NULL) return -1; // 错误处理
+    return dog->_age;
+}
+
+// 吃东西
+void dog_eat(Dog *dog, const char *food) {
+    if (dog == NULL || food == NULL) return;
+    printf("%s吃了%s\n", dog->name, food);
+}
+```
+
+```c
+// main.c
+#include <stdio.h>
+#include "dog.h"
+#include "math_utils.h"
+
+int main() {
+    // 实例化 Dog (类似 lucky_dog = Dog("Lucky", 3))
+    Dog lucky_dog;
+    dog_init(&lucky_dog, "Lucky", 3);
+
+    // 打印信息 (类似 print(f"..."))
+    // 注意：C 语言可以直接访问结构体成员，但按照约定，年龄应通过函数获取
+    printf("小狗的名字：%s，它 %d 岁了\n", lucky_dog.name, dog_get_age(&lucky_dog));
+
+    // 调用方法 (类似 lucky_dog.eat("骨头"))
+    dog_eat(&lucky_dog, "骨头");
+
+    // 调用数学工具 (类似 print(math_utils.add(1, 2)))
+    int result = add(1, 2);
+    printf("%d\n", result);
+
+    return 0;
+}
+```
+</TabItem>
+
+<TabItem label="TypeScript">
+<FileTree>
+- math_utils.ts
+- dog.ts
+- main.ts
+</FileTree>
+
+```ts
+// math_utils.ts
+
+export function add(a: number, b: number): number {
+    return a + b;
+}
+```
+
+```ts
+// dog.ts
+
+export class Dog {
+    public name: string;
+    private _age: number;
+
+    constructor(name: string, age: number) {
+        this.name = name;
+        this._age = age;
+    }
+
+    getAge(): number {
+        return this._age;
+    }
+
+    eat(food: string): void {
+        console.log(`${this.name}吃了${food}`);
+    }
+}
+``` 
+
+```ts
+// main.ts
+
+import { Dog } from './dog';
+import { add } from './math_utils';
+
+const lucky_dog = new Dog("Lucky", 3);
+
+console.log(`小狗的名字：${lucky_dog.name}，它 ${lucky_dog.getAge()} 岁了`);
+
+lucky_dog.eat("骨头");
+
+console.log(add(1, 2));
+``` 
+</TabItem>
+</Tabs>
+
+## 包
+
+当模块数量增多时，仅靠文件难以管理。通常可以根据功能将模块放入不同的目录中进行组织，这种由多个模块组成的 **目录** 结构称为 **包**。
+
+<Aside type="note">
+**目录**（**Directory**）：用于组织和管理文件及子目录的结构单位，是文件系统中的基本层级组织方式。
+
+**包**（**Package**）：由多个相关模块组成的代码组织单位，通常以目录的形式存在，用于对模块进行更高层次的管理。
+</Aside>
+
+模块是单个文件级别的代码组织单位，而包是由多个模块组成的目录结构，用于更高层次的代码组织。一个包通常是一个目录，其中包含多个模块文件，甚至可以包含 **子包**（嵌套目录）。
+
+<Aside type="note">
+**子包**（**Subpackage**）：包含在包内部的包，是包的层级化组织形式，用于进一步细分和组织代码结构。
+</Aside>
+
+包不仅可以在项目内部组织和复用代码，还可以作为分发单位在不同项目之间共享。包可以通过特定机制对外暴露统一接口，隐藏内部实现细节。
+
+大多数编程语言都提供 **包管理工具**（如 pip、npm），通过这些工具可以方便地安装和使用他人发布的代码包，从而避免重复开发。
+
+<Aside type="note">
+**包管理工具**（**Package Manager**）：用于安装、更新、删除和管理代码包及其依赖关系的软件工具。
+</Aside>
+
+此外，包还提供命名空间隔离，不同包中的模块可以使用相同名称而不会发生冲突。
+
+包是用于组织和管理多个模块的结构单位，通常以目录的形式存在，并提供命名空间隔离和代码分发能力。
+
+在不同语言中，包的具体形式有所不同，例如：
+- Python：包通常是包含 \_\_init\_\_.py 的目录
+- Node.js：包通常由 package.json 定义
+
+## 库
+
+模块和包是从代码结构上对代码进行层次划分的方式。当一组模块和包被组织起来，并对外提供可复用的功能时，就形成了 **库**。
+
+<Aside type="note">
+**库**（**Library**）：由多个模块或包组成的代码集合，对外提供可复用的功能，供其他程序调用。
+</Aside>
+
+库的核心在于对外提供 **接口（API）**，使用者可以通过这些接口调用功能，而无需关心其内部实现。通过库，开发者可以复用已有代码，避免重复开发，提高开发效率。
+
+<Aside type="note">
+**接口**（**Interface**）：系统或模块对外暴露的一组可调用的功能或操作的定义，用于规定如何与其进行交互。
+</Aside>
+
+一个成熟的库通常会提供清晰的接口设计、完善的文档，以及良好的 **版本管理** 机制。
+
+<Aside type="note">
+**版本管理**（**Version Management**）：对软件或代码在不同阶段的版本进行记录、控制和维护的过程。
+</Aside>
+
+许多编程语言在发布时会附带一些常用功能的库，这些库称为 **标准库（Standard Library）** 或 **内置库（Built-in Library）**。此外，还有大量由社区或第三方提供的库，可以通过包管理工具进行安装和使用。
+
+<Aside type="note">
+**标准库**（**Standard Library**，又称 **内置库**（**Built-in Library**））：随编程语言一同提供的一组预先实现的常用功能代码库，开发者可以直接使用而无需额外安装。
+</Aside>
+
+## 框架
+
+在使用库时，开发者通常主动调用库中已经实现的函数或类。在实际开发中，许多项目在结构和执行流程上具有共性，可以将这些通用部分抽离出来，形成 **框架**。
+
+<Aside type="note">
+**框架**（**Framework**）：为某一类应用提供基础结构和通用功能的代码集合，它规定了程序的组织方式和执行流程，开发者在其基础上编写具体业务逻辑。
+</Aside>
+
+在使用框架时，开发者只需编写由框架调用的业务代码。
+
+使用框架可以加快项目开发速度，并通过约定使项目结构更加清晰；但同时也带来了较高的学习成本，并可能降低灵活性。
+
+与库不同，框架通常通过控制反转（Inversion of Control），即由框架调用开发者编写的代码。库更像是工具，由开发者按需调用；而框架则提供了整体结构，开发者需要在其约定的框架内编写代码。
+
+<Aside type="note">
+**控制反转**（**Inversion of Control**，简称 **IoC**）：将程序的控制权从开发者代码转移给框架或外部容器，由其负责调用和管理程序执行流程的一种设计思想。
+</Aside>
+
+**库 vs 框架**
+
+| 对比维度 | 库（Library） | 框架（Framework） |
+|----------|--------------|-------------------|
+| 本质 | 提供功能的代码集合 | 提供结构和流程的代码骨架 |
+| 控制权 | 开发者控制流程 | 框架控制流程（控制反转） |
+| 调用关系 | 开发者调用库 | 框架调用开发者代码 |
+| 关注点 | 功能实现 | 系统结构与执行流程 |
+| 使用方式 | 按需引入和调用 | 按照框架约定进行开发 |
+| 灵活性 | 高 | 相对较低 |
+| 学习成本 | 较低 | 较高 |
+
+<Aside type="tip" title="小结">
+本节简单介绍了函数、类、模块、包、库和框架等代码复用手段或方式。
+
+---
+
+本节涉及到的概念：**抽象**、**代码复用**、**一次且仅一次**、**不要重复你自己**、**函数**、**对象**、**类**、**属性**、**方法**、**模块**、**命名空间**、**目录**、**包**、**子包**、**包管理工具**、**库**、**接口**、**版本管理**、**标准库**、**内置库**、**框架**、**控制反转**。
+</Aside>
+ 
