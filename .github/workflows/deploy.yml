@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -40,12 +40,12 @@ jobs:
           BASE_PATH: /ai-coding-from-zero
         run: pnpm build
 
-      # 部署到 GitHub Pages 的热门选择：
-      # 文档：https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
+      # Deploy built site to GitHub Pages
+      # Docs: https://github.com/peaceiris/actions-gh-pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          # 要发布到 `gh-pages` 分支的构建输出：
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # Build output directory to publish into gh-pages branch.
           publish_dir: ./dist
           force_orphan: true
