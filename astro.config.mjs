@@ -27,15 +27,15 @@ export default defineConfig({
 			editLink: { baseUrl: docsEditBase },
 			sidebar: [
 				{
-					label: 'Guides',
+					label: '基础篇',
 					items: [
 						// Each item here is one entry in the navigation menu.
-						'guides/first-application',
-						'guides/discovering-needs',
-						'guides/software-architecture',
-						'guides/application-form',
-						'guides/introduction-to-programming-languages',
-						'guides/introduction-to-simple-code-reuse-techniques',
+						'basic/first-application',
+						'basic/discovering-needs',
+						'basic/software-architecture',
+						'basic/application-form',
+						'basic/introduction-to-programming-languages',
+						'basic/introduction-to-simple-code-reuse-techniques',
 					],
 				},
 			],
