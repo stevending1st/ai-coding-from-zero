@@ -36,8 +36,13 @@ export default defineConfig({
 						'basic/application-form',
 						'basic/introduction-to-programming-languages',
 						'basic/introduction-to-simple-code-reuse-techniques',
+						'basic/basic-technology-selection',
 					],
 				},
+				{
+					label: '专项篇',
+					items: [],
+				}
 			],
 		}),
 	],
