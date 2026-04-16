@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-geb5z4w3"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>编程语言介绍 | AI Coding from Zero</title><link rel="canonical" href="https://stevending1st.github.io/ai-coding-from-zero/basic/introduction-to-programming-languages/"/><link rel="sitemap" href="/ai-coding-from-zero/sitemap-index.xml"/><link rel="shortcut icon" href="/ai-coding-from-zero/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.17.3"/><meta name="generator" content="Starlight v0.37.6"/><meta property="og:title" content="编程语言介绍"/><meta property="og:type" content="article"/><meta property="og:url" content="https://stevending1st.github.io/ai-coding-from-zero/basic/introduction-to-programming-languages/"/><meta property="og:locale" content="en"/><meta property="og:description" content="介绍一下采用什么编程语言能构建我们的目标应用。"/><meta property="og:site_name" content="AI Coding from Zero"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="介绍一下采用什么编程语言能构建我们的目标应用。"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/ai-coding-from-zero/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/ai-coding-from-zero/_astro/index.lXwLLQ5b.css">
+<style>@layer starlight.components{:root{--sl-badge-default-border: var(--sl-color-accent);--sl-badge-default-bg: var(--sl-color-accent-low);--sl-badge-default-text: #fff;--sl-badge-note-border: var(--sl-color-blue);--sl-badge-note-bg: var(--sl-color-blue-low);--sl-badge-note-text: #fff;--sl-badge-danger-border: var(--sl-color-red);--sl-badge-danger-bg: var(--sl-color-red-low);--sl-badge-danger-text: #fff;--sl-badge-success-border: var(--sl-color-green);--sl-badge-success-bg: var(--sl-color-green-low);--sl-badge-success-text: #fff;--sl-badge-caution-border: var(--sl-color-orange);--sl-badge-caution-bg: var(--sl-color-orange-low);--sl-badge-caution-text: #fff;--sl-badge-tip-border: var(--sl-color-purple);--sl-badge-tip-bg: var(--sl-color-purple-low);--sl-badge-tip-text: #fff}[data-theme=light]:root{--sl-badge-default-bg: var(--sl-color-accent-high);--sl-badge-note-bg: var(--sl-color-blue-high);--sl-badge-danger-bg: var(--sl-color-red-high);--sl-badge-success-bg: var(--sl-color-green-high);--sl-badge-caution-bg: var(--sl-color-orange-high);--sl-badge-tip-bg: var(--sl-color-purple-high)}.sl-badge:where(.astro-k746tden){display:inline-block;border:1px solid var(--sl-color-border-badge);border-radius:.25rem;font-family:var(--sl-font-system-mono);line-height:normal;color:var(--sl-color-text-badge);background-color:var(--sl-color-bg-badge);overflow-wrap:anywhere}.sidebar-content .sl-badge:where(.astro-k746tden){line-height:1;font-size:var(--sl-text-xs);padding:.125rem .375rem}.sidebar-content a[aria-current=page]>.sl-badge:where(.astro-k746tden){--sl-color-bg-badge: transparent;--sl-color-border-badge: currentColor;color:inherit}.default:where(.astro-k746tden){--sl-color-bg-badge: var(--sl-badge-default-bg);--sl-color-border-badge: var(--sl-badge-default-border);--sl-color-text-badge: var(--sl-badge-default-text)}.note:where(.astro-k746tden){--sl-color-bg-badge: var(--sl-badge-note-bg);--sl-color-border-badge: var(--sl-badge-note-border);--sl-color-text-badge: var(--sl-badge-note-text)}.danger:where(.astro-k746tden){--sl-color-bg-badge: var(--sl-badge-danger-bg);--sl-color-border-badge: var(--sl-badge-danger-border);--sl-color-text-badge: var(--sl-badge-danger-text)}.success:where(.astro-k746tden){--sl-color-bg-badge: var(--sl-badge-success-bg);--sl-color-border-badge: var(--sl-badge-success-border);--sl-color-text-badge: var(--sl-badge-success-text)}.tip:where(.astro-k746tden){--sl-color-bg-badge: var(--sl-badge-tip-bg);--sl-color-border-badge: var(--sl-badge-tip-border);--sl-color-text-badge: var(--sl-badge-tip-text)}.caution:where(.astro-k746tden){--sl-color-bg-badge: var(--sl-badge-caution-bg);--sl-color-border-badge: var(--sl-badge-caution-border);--sl-color-text-badge: var(--sl-badge-caution-text)}.small:where(.astro-k746tden){font-size:var(--sl-text-xs);padding:.125rem .25rem}.medium:where(.astro-k746tden){font-size:var(--sl-text-sm);padding:.175rem .35rem}.large:where(.astro-k746tden){font-size:var(--sl-text-base);padding:.225rem .45rem}.sl-markdown-content :is(h1,h2,h3,h4,h5,h6) .sl-badge:where(.astro-k746tden){vertical-align:middle}}
+@layer starlight.components{svg:where(.astro-ulra4euv){color:var(--sl-icon-color);font-size:var(--sl-icon-size, 1em);width:1em;height:1em}}
+@layer starlight.components{starlight-tabs:where(.astro-tskqozyo){display:block}.tablist-wrapper:where(.astro-tskqozyo){overflow-x:auto}:where(.astro-tskqozyo)[role=tablist]{display:flex;list-style:none;border-bottom:2px solid var(--sl-color-gray-5);padding:0}.tab:where(.astro-tskqozyo){display:flex}.tab:where(.astro-tskqozyo)>:where(.astro-tskqozyo)[role=tab]{--sl-tab-color-border: var(--sl-color-gray-5);display:flex;align-items:center;gap:.5rem;line-height:var(--sl-line-height-headings);padding:.275rem 1.25rem;text-decoration:none;box-shadow:0 2px 0 var(--sl-tab-color-border);color:var(--sl-color-gray-3);outline-offset:var(--sl-outline-offset-inside);overflow-wrap:initial}.tab:where(.astro-tskqozyo) :where(.astro-tskqozyo)[role=tab][aria-selected=true]{--sl-tab-color-border: var(--sl-color-text-accent);color:var(--sl-color-white);font-weight:600}.tablist-wrapper:where(.astro-tskqozyo)~[role=tabpanel]{margin-top:1rem}}
+@layer starlight.components{.sl-steps{--bullet-size: calc(var(--sl-line-height) * 1rem);--bullet-margin: .375rem;list-style:none;counter-reset:steps-counter var(--sl-steps-start, 0);padding-inline-start:0}.sl-steps>li{counter-increment:steps-counter;position:relative;padding-inline-start:calc(var(--bullet-size) + 1rem);padding-bottom:1px;min-height:calc(var(--bullet-size) + var(--bullet-margin))}.sl-steps>li+li{margin-top:0}.sl-steps>li:before{content:counter(steps-counter);position:absolute;top:0;inset-inline-start:0;width:var(--bullet-size);height:var(--bullet-size);line-height:var(--bullet-size);font-size:var(--sl-text-xs);font-weight:600;text-align:center;color:var(--sl-color-white);background-color:var(--sl-color-gray-6);border-radius:99rem;box-shadow:inset 0 0 0 1px var(--sl-color-gray-5)}.sl-steps>li:after{--guide-width: 1px;content:"";position:absolute;top:calc(var(--bullet-size) + var(--bullet-margin));bottom:var(--bullet-margin);inset-inline-start:calc((var(--bullet-size) - var(--guide-width)) / 2);width:var(--guide-width);background-color:var(--sl-color-hairline-light)}}@layer starlight.content{.sl-steps>li>:first-child{--lh: calc(1em * var(--sl-line-height));--shift-y: calc(.5 * (var(--bullet-size) - var(--lh)));transform:translateY(var(--shift-y));margin-bottom:var(--shift-y)}.sl-steps>li>:first-child:where(h1,h2,h3,h4,h5,h6){--lh: calc(1em * var(--sl-line-height-headings))}@supports (--prop: 1lh){.sl-steps>li>:first-child{--lh: 1lh}}}
+@layer starlight.components{starlight-file-tree:where(.astro-5roujmf4){--x-space: 1.5rem;--y-space: .125rem;--y-pad: 0;display:block;border:1px solid var(--sl-color-gray-5);padding:1rem;background-color:var(--sl-color-gray-6);font-size:var(--sl-text-xs);font-family:var(--__sl-font-mono);overflow-x:auto}starlight-file-tree:where(.astro-5roujmf4) .directory>details{border:0;padding:0;padding-inline-start:var(--x-space);background:transparent}starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary{margin-inline-start:calc(-1 * var(--x-space));border:0;padding:var(--y-pad) .625rem;font-weight:400;color:var(--sl-color-white);max-width:100%}starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary::marker,starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary::-webkit-details-marker{color:var(--sl-color-gray-3)}starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary:hover,starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary:hover .tree-icon{cursor:pointer;color:var(--sl-color-text-accent);fill:currentColor}starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary:hover~ul{border-color:var(--sl-color-gray-4)}starlight-file-tree:where(.astro-5roujmf4) .directory>details>summary:hover .highlight .tree-icon{color:var(--sl-color-text-invert);fill:currentColor}starlight-file-tree:where(.astro-5roujmf4) ul{margin-inline-start:.5rem;border-inline-start:1px solid var(--sl-color-gray-5);padding:0;padding-inline-start:.125rem;list-style:none}starlight-file-tree:where(.astro-5roujmf4)>ul{margin:0;border:0;padding:0}starlight-file-tree:where(.astro-5roujmf4) li{margin:var(--y-space) 0;padding:var(--y-pad) 0}starlight-file-tree:where(.astro-5roujmf4) .file{margin-inline-start:calc(var(--x-space) - .125rem);color:var(--sl-color-white)}starlight-file-tree:where(.astro-5roujmf4) .tree-entry{display:inline-flex;align-items:flex-start;flex-wrap:wrap;max-width:calc(100% - 1rem)}@media(min-width:30em){starlight-file-tree:where(.astro-5roujmf4) .tree-entry{flex-wrap:nowrap}}starlight-file-tree:where(.astro-5roujmf4) .tree-entry>:first-child{flex-shrink:0}starlight-file-tree:where(.astro-5roujmf4) .empty{color:var(--sl-color-gray-3);padding-inline-start:.375rem}starlight-file-tree:where(.astro-5roujmf4) .comment{color:var(--sl-color-gray-3);padding-inline-start:1.625rem;max-width:24rem;min-width:12rem}starlight-file-tree:where(.astro-5roujmf4) .highlight{display:inline-block;border-radius:.25rem;padding-inline-end:.5rem;color:var(--sl-color-text-invert);background-color:var(--sl-color-text-accent)}starlight-file-tree:where(.astro-5roujmf4) svg{display:inline;fill:var(--sl-color-gray-3);vertical-align:middle;margin-inline:.25rem .375rem;width:.875rem;height:.875rem}starlight-file-tree:where(.astro-5roujmf4) .highlight svg.tree-icon{fill:currentColor}}
+@layer starlight.components{.sl-link-button:where(.astro-bzmu2hht){align-items:center;border:1px solid transparent;border-radius:999rem;display:inline-flex;font-size:var(--sl-text-sm);gap:.5em;line-height:1.1875;outline-offset:.25rem;padding:.4375rem 1.125rem;text-decoration:none}.sl-link-button:where(.astro-bzmu2hht).primary{background:var(--sl-color-text-accent);border-color:var(--sl-color-text-accent);color:var(--sl-color-black)}.sl-link-button:where(.astro-bzmu2hht).primary:hover{color:var(--sl-color-black)}.sl-link-button:where(.astro-bzmu2hht).secondary{border-color:inherit;color:var(--sl-color-white)}.sl-link-button:where(.astro-bzmu2hht).minimal{color:var(--sl-color-white);padding-inline:0}.sl-link-button:where(.astro-bzmu2hht) svg{flex-shrink:0}@media(min-width:50rem){.sl-link-button:where(.astro-bzmu2hht){font-size:var(--sl-text-base);padding:.9375rem 1.25rem}}.sl-markdown-content .sl-link-button:where(.astro-bzmu2hht){margin-inline-end:1rem}.sl-markdown-content .sl-link-button:where(.astro-bzmu2hht):not(:where(p *)){margin-block:1rem}}
+</style><script type="module" src="/ai-coding-from-zero/_astro/page.B1D-nYk3.js"></script></head> <body class="astro-geb5z4w3"> <a href="#_top" class="astro-22vx3hlc">Skip to content</a>  <div class="page sl-flex astro-nv4jwngw"> <header class="header astro-nv4jwngw"><div class="header astro-h2ngrbt6"> <div class="title-wrapper sl-flex astro-h2ngrbt6"> <a href="/ai-coding-from-zero/" class="site-title sl-flex astro-lmyiw4qn">  <span class="astro-lmyiw4qn" translate="no"> AI Coding from Zero </span> </a>  </div> <div class="sl-flex print:hidden astro-h2ngrbt6"> <site-search class="astro-h2ngrbt6 astro-rfstfci6" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-rfstfci6"> <svg aria-hidden="true" class="astro-rfstfci6 astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-rfstfci6" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-rfstfci6" style="display: none;"> <kbd class="astro-rfstfci6">Ctrl</kbd><kbd class="astro-rfstfci6">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-rfstfci6"> <div class="dialog-frame sl-flex astro-rfstfci6">  <button data-close-modal class="sl-flex md:sl-hidden astro-rfstfci6"> Cancel </button> <div class="search-container astro-rfstfci6"> <div id="starlight__search" class="astro-rfstfci6"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/ai-coding-from-zero/_astro/Search.astro_astro_type_script_index_0_lang.CYH49vUp.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-h2ngrbt6"> <div class="sl-flex social-icons astro-h2ngrbt6"> <a href="https://github.com/stevending1st/ai-coding-from-zero" rel="me" class="sl-flex astro-rlrwsdcz"><span class="sr-only astro-rlrwsdcz">GitHub</span><svg aria-hidden="true" class="astro-rlrwsdcz astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-lhpb6ziv"> <span class="sr-only astro-lhpb6ziv">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-lhpb6ziv astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-lhpb6ziv"> <option value="dark" class="astro-lhpb6ziv">Dark</option><option value="light" class="astro-lhpb6ziv">Light</option><option value="auto" selected class="astro-lhpb6ziv">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-lhpb6ziv astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-nv4jwngw" aria-label="Main"> <starlight-menu-button class="print:hidden astro-lrfrqusg"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-lrfrqusg"> <svg aria-hidden="true" class="open-menu astro-lrfrqusg astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-lrfrqusg astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-nv4jwngw"> <div class="sidebar-content sl-flex astro-nv4jwngw"> <sl-sidebar-state-persist data-hash="11jgx6m" class="astro-pri6abvc"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-yjcgryup"> <li class="astro-yjcgryup"> <details open class="astro-yjcgryup"> <summary class="astro-yjcgryup"> <span class="group-label astro-yjcgryup"> <span class="large astro-yjcgryup">基础篇</span>  </span> <svg aria-hidden="true" class="caret astro-yjcgryup astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-yjcgryup"> <li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/first-application/" class="astro-yjcgryup"> <span class="astro-yjcgryup">第一个 AI 编程应用</span>  </a> </li><li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/discovering-needs/" class="astro-yjcgryup"> <span class="astro-yjcgryup">发现需求</span>  </a> </li><li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/software-architecture/" class="astro-yjcgryup"> <span class="astro-yjcgryup">软件架构</span>  </a> </li><li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/application-form/" class="astro-yjcgryup"> <span class="astro-yjcgryup">应用的交互方式和形态</span>  </a> </li><li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/introduction-to-programming-languages/" aria-current="page" class="astro-yjcgryup"> <span class="astro-yjcgryup">编程语言介绍</span>  </a> </li><li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/introduction-to-simple-code-reuse-techniques/" class="astro-yjcgryup"> <span class="astro-yjcgryup">简单的代码复用技术简介</span>  </a> </li><li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/basic/basic-technology-selection/" class="astro-yjcgryup"> <span class="astro-yjcgryup">技术选型初探</span>  </a> </li> </ul>  </details> </li><li class="astro-yjcgryup"> <details open class="astro-yjcgryup"> <summary class="astro-yjcgryup"> <span class="group-label astro-yjcgryup"> <span class="large astro-yjcgryup">专项篇</span>  </span> <svg aria-hidden="true" class="caret astro-yjcgryup astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <ul class="astro-yjcgryup"> <li class="astro-yjcgryup"> <a href="/ai-coding-from-zero/specialized/git-basic/" class="astro-yjcgryup"> <span class="astro-yjcgryup">Git 基础</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-j4wkfzhj"> <div class="social-icons astro-j4wkfzhj"> <a href="https://github.com/stevending1st/ai-coding-from-zero" rel="me" class="sl-flex astro-rlrwsdcz"><span class="sr-only astro-rlrwsdcz">GitHub</span><svg aria-hidden="true" class="astro-rlrwsdcz astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-lhpb6ziv"> <span class="sr-only astro-lhpb6ziv">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-lhpb6ziv astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-lhpb6ziv"> <option value="dark" class="astro-lhpb6ziv">Dark</option><option value="light" class="astro-lhpb6ziv">Light</option><option value="auto" selected class="astro-lhpb6ziv">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-lhpb6ziv astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-nv4jwngw">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-6vcchqj4"> <aside class="right-sidebar-container print:hidden astro-6vcchqj4"> <div class="right-sidebar astro-6vcchqj4"> <script type="module" src="/ai-coding-from-zero/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.hwBsy0Mo.js"></script><script type="module" src="/ai-coding-from-zero/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js"></script><div class="lg:sl-hidden astro-7esopqdh"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-rfg4dobc"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-rfg4dobc"><details id="starlight__mobile-toc" class="astro-rfg4dobc"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-rfg4dobc"><span class="toggle sl-flex astro-rfg4dobc">On this page<svg aria-hidden="true" class="caret astro-rfg4dobc astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-rfg4dobc"></span></summary><div class="dropdown astro-rfg4dobc"><ul class="isMobile astro-kuyoexdm" style="--depth: 0;"> <li class="astro-kuyoexdm" style="--depth: 0;"> <a href="#_top" class="astro-kuyoexdm" style="--depth: 0;"> <span class="astro-kuyoexdm" style="--depth: 0;">Overview</span> </a> <ul class="isMobile astro-kuyoexdm" style="--depth: 1;"> <li class="astro-kuyoexdm" style="--depth: 1;"> <a href="#机器码汇编语言和高级语言" class="astro-kuyoexdm" style="--depth: 1;"> <span class="astro-kuyoexdm" style="--depth: 1;">机器码、汇编语言和高级语言</span> </a>  </li><li class="astro-kuyoexdm" style="--depth: 1;"> <a href="#编译型语言和解释型语言" class="astro-kuyoexdm" style="--depth: 1;"> <span class="astro-kuyoexdm" style="--depth: 1;">编译型语言和解释型语言</span> </a>  </li><li class="astro-kuyoexdm" style="--depth: 1;"> <a href="#常见编程语言" class="astro-kuyoexdm" style="--depth: 1;"> <span class="astro-kuyoexdm" style="--depth: 1;">常见编程语言</span> </a>  </li> </ul>  </li> </ul> </div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-7esopqdh"><div class="sl-container astro-7esopqdh"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-kuyoexdm" style="--depth: 0;"> <li class="astro-kuyoexdm" style="--depth: 0;"> <a href="#_top" class="astro-kuyoexdm" style="--depth: 0;"> <span class="astro-kuyoexdm" style="--depth: 0;">Overview</span> </a> <ul class="astro-kuyoexdm" style="--depth: 1;"> <li class="astro-kuyoexdm" style="--depth: 1;"> <a href="#机器码汇编语言和高级语言" class="astro-kuyoexdm" style="--depth: 1;"> <span class="astro-kuyoexdm" style="--depth: 1;">机器码、汇编语言和高级语言</span> </a>  </li><li class="astro-kuyoexdm" style="--depth: 1;"> <a href="#编译型语言和解释型语言" class="astro-kuyoexdm" style="--depth: 1;"> <span class="astro-kuyoexdm" style="--depth: 1;">编译型语言和解释型语言</span> </a>  </li><li class="astro-kuyoexdm" style="--depth: 1;"> <a href="#常见编程语言" class="astro-kuyoexdm" style="--depth: 1;"> <span class="astro-kuyoexdm" style="--depth: 1;">常见编程语言</span> </a>  </li> </ul>  </li> </ul> </nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-6vcchqj4">  <main data-pagefind-body class="astro-geb5z4w3" lang="en" dir="ltr">    <div class="content-panel astro-viivj3xw"> <div class="sl-container astro-viivj3xw"> <h1 id="_top" class="astro-ajvnhdo5">编程语言介绍</h1>  </div> </div>  <div class="content-panel astro-viivj3xw"> <div class="sl-container astro-viivj3xw"> <div class="sl-markdown-content"> <p>本节我们来讨论一下采用什么技术可以构建目标应用，接下来可能会涉及很多陌生的技术，请不要感到害怕，它们只是构建应用的工具，不同的工具（技术）有不同的特性，我们需要结合目标应用的特点选择最合适的技术。我们先从编程语言开始介绍。</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="机器码汇编语言和高级语言">机器码、汇编语言和高级语言</h3><a class="sl-anchor-link" href="#机器码汇编语言和高级语言"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “机器码、汇编语言和高级语言”</span></a></div>
+<p>编程语言在计算机中运行，依赖于计算机中一个名为 <strong>CPU（中央处理器）</strong> 的硬件，由于设计理念和应用场景的不同，市面上出现了多种不同 <strong>指令集架构</strong> 的处理器，如 x86、x86-64（又称 x64）、ARM 和 RISC-V 等……CPU 是一个只能执行 <strong>机器码</strong> 的部件，机器码是由 <code dir="auto">0</code> 和 <code dir="auto">1</code> 组成的指令，类似于 <code dir="auto">10110000 01100001……</code>。如果要让计算机执行任务，需要向它提供一组按照特定顺序排列的指令，这组指令的序列称为 <strong>程序</strong>，同一个操作对不同的指令集架构的 CPU 而言，需要使用的指令不一定一样。在早期，程序员确实需要手动输入完全由 <code dir="auto">0</code> 和 <code dir="auto">1</code> 组成的机器码，很难想象这是一种多么糟糕的体验。</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note </p> <div class="starlight-aside__content"> <p><strong>中央处理器</strong>（<strong>Central Processing Unit</strong>，简称 <strong>CPU</strong>），简称“<strong>处理器</strong>”，是计算机系统的运算和控制核心，被誉为计算机的“大脑”。它的核心功能是解释计算机指令以及处理计算机软件中的数据。</p><p><strong>指令集架构</strong>（<strong>Instruction Set Architecture</strong>，简称 <strong>ISA</strong>）：是计算机体系结构中与程序设计有关的核心部分，它充当了计算机硬件与软件之间的一个关键接口与抽象层。</p><p><strong>机器码</strong>（<strong>Machine Code</strong>）：是计算机的 CPU 能直接识别和执行的二进制指令代码。它是计算机硬件的“母语”，由一系列由 <code dir="auto">0</code> 和 <code dir="auto">1</code> 组成的二进制序列构成，是计算机程序最底层的表达形式。</p><p><strong>程序</strong>（<strong>Computer Program</strong>）：是指为了得到某种结果而可以由计算机等具有信息处理能力的装置执行的代码化指令序列。</p> </div> </aside>
+<p>为了方便人们编写程序，发明了 <strong>汇编语言</strong>。汇编语言使用 <strong>助记符</strong> 来表示机器指令，使程序更易于阅读和编写，比如 <code dir="auto">ADD R1, R2, R3</code> 通常表示把 R2 和 R3 的值相加，并把结果存入 R1。</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note </p> <div class="starlight-aside__content"> <p><strong>助记符</strong>（<strong>Mnemonic</strong>）：是汇编语言中用来表示机器指令操作码的符号名称，通常是一个英语单词或其缩写，用于帮助人们记忆和理解指令的功能。它是连接晦涩难懂的机器码与人类思维的关键桥梁。</p><p><strong>汇编语言</strong>（<strong>Assembly Language</strong>），又称“<strong>符号语言</strong>”，是一种面向机器的低级程序设计语言。它通过使用 <strong>助记符（Mnemonic）</strong> 代替机器指令的操作码，用 <strong>地址符号或标号（Label）</strong> 代替指令或操作数的地址，从而将晦涩难懂的机器语言转化为人类相对易于阅读、理解和维护的文本形式。</p> </div> </aside>
+<p>程序以文本形式书写时，被称为 <strong>源代码</strong>，编写程序的过程被称为 <strong>编程</strong>。</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note </p> <div class="starlight-aside__content"> <p><strong>源代码</strong>（<strong>Source Code</strong>），也称为 <strong>源程序</strong>，是指未编译的、按照一定的程序设计语言规范书写的文本文件，是一系列人类可读的计算机语言指令。它是软件开发的核心产物，是程序员用编程语言（如 C、Python、Java）编写的原始代码。</p><p><strong>编程</strong>（<strong>Programming</strong>）：是指为了让计算机解决特定问题，而设计、编写、测试和维护计算机程序的过程。</p> </div> </aside>
+<p>汇编语言仍然与具体的指令集架构紧密相关，不同处理器运行的汇编语言程序往往难以通用。为了摆脱对硬件的依赖，并提高开发效率，人们发明了多种 <strong>高级语言</strong>，比如 C 语言、Python、Java 等。以 Python 为例，同样的加法操作，把 r2 和 r3 的值相加并存入 r1，可以写成 <code dir="auto">r1 = r2 + r3</code>。高级语言更加接近人类思维方式，需要通过 <strong>编译器</strong> 或 <strong>解释器</strong> 翻译成机器码后才能被执行。</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note </p> <div class="starlight-aside__content"> <p><strong>高级语言</strong>（<strong>High-level Programming Language</strong>）：是一种独立于机器硬件、面向过程或对象的计算机编程语言。它以人类的日常语言和数学公式为基础，使用接近人类思维的语法和结构，使程序员能够更专注于解决问题本身，而无需直接操作计算机底层的硬件和指令。</p><p><strong>编译器</strong>（<strong>Compiler</strong>）：是一种将用某种源语言（通常是高级语言）编写的程序，一次性完整地转换成另一种等价的目标语言（通常是低级语言或机器语言）程序的软件系统。</p><p><strong>解释器</strong>（<strong>Interpreter</strong>）：是一种计算机程序，能够将高级编程语言编写的源代码逐行翻译成机器可执行的指令，并立即执行这些指令。</p> </div> </aside>
+<p><strong>机器码、汇编语言、高级语言对比表</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">特性</th><th align="left">机器码 (Machine Language)</th><th align="left">汇编语言 (Assembly Language)</th><th align="left">高级语言 (High-Level Language)</th></tr></thead><tbody><tr><td align="left">定义</td><td align="left">计算机 CPU 能直接识别和执行的二进制代码（<code dir="auto">0</code> 和 <code dir="auto">1</code>）。</td><td align="left">使用助记符（Mnemonics）代替二进制指令的低级语言。</td><td align="left">接近人类自然语言和数学公式的编程语言，独立于具体硬件。</td></tr><tr><td align="left">组成形式</td><td align="left">二进制代码（如 <code dir="auto">10110001</code>）或十六进制。</td><td align="left">助记符 + 操作数（如 <code dir="auto">MOV AX, BX</code>）。</td><td align="left">英文单词、符号、表达式（如 <code dir="auto">if (x > 0) { ... }</code>）。</td></tr><tr><td align="left">可读性</td><td align="left">极差。人类难以阅读、编写和记忆。</td><td align="left">较差。比机器语言稍好，但仍需了解硬件架构。</td><td align="left">高。逻辑清晰，易于阅读、理解和维护。</td></tr><tr><td align="left">执行方式</td><td align="left">直接执行。无需翻译，CPU 直接运行。</td><td align="left">需汇编。需通过“汇编器”翻译成机器语言后执行。</td><td align="left">需编译或解释。需通过“编译器”或“解释器”翻译成机器语言。</td></tr><tr><td align="left">执行效率</td><td align="left">最高。无额外开销，直接控制硬件。</td><td align="left">很高。几乎与机器语言等价，仅多一步翻译。</td><td align="left">较低。经过多层抽象和翻译，通常有额外开销（但现代优化已缩小差距）。</td></tr><tr><td align="left">可移植性</td><td align="left">无。特定于某种 CPU 架构（如 x86 代码不能在 ARM 上跑）。</td><td align="left">低。依赖于具体的处理器架构。</td><td align="left">高。同一份代码经不同编译器处理后，可在多种平台运行。</td></tr><tr><td align="left">开发效率</td><td align="left">极低。编写极其耗时，容易出错。</td><td align="left">低。编写繁琐，调试困难。</td><td align="left">高。开发速度快，库函数丰富，调试工具完善。</td></tr><tr><td align="left">硬件控制力</td><td align="left">完全控制。可直接操作寄存器、内存地址。</td><td align="left">强控制。可直接访问硬件资源。</td><td align="left">弱控制。通常通过操作系统 API 间接访问硬件（嵌入式 C 等除外）。</td></tr><tr><td align="left">典型应用</td><td align="left">早期计算机、微控制器底层引导程序、极度追求性能的极小模块。</td><td align="left">驱动程序开发、嵌入式系统、逆向工程、性能关键代码段。</td><td align="left">应用软件、Web 开发、数据分析、人工智能、游戏开发等绝大多数领域。</td></tr><tr><td align="left">代表示例</td><td align="left"><code dir="auto">10001011 00000001</code></td><td align="left"><code dir="auto">MOV AL, 1</code><br><code dir="auto">ADD AL, 2</code></td><td align="left">Python: <code dir="auto">x = 1 + 2</code><br>C++: <code dir="auto">int x = 1 + 2;</code></td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="编译型语言和解释型语言">编译型语言和解释型语言</h3><a class="sl-anchor-link" href="#编译型语言和解释型语言"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “编译型语言和解释型语言”</span></a></div>
+<p>前面我们提到过，计算机的核心是中央处理器，中央处理器只能处理机器码，高级语言需要转换为机器码才能被计算机运行，根据转换的方式可以将高级语言分为 <strong>编译型语言</strong> 和 <strong>解释型语言</strong>。编译型语言会先通过编译器将源代码转换成目标平台的机器码和可以在目标平台运行的 <strong>可执行文件</strong>，这个过程被称为“<strong>编译</strong>”，同一份源代码由于平台的差异会导致可执行文件存在差异。解释型语言会在程序运行时由解释器解析源代码并执行，通常不会提前生成与平台绑定的机器码可执行文件。</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note </p> <div class="starlight-aside__content"> <p><strong>编译型语言</strong>（<strong>Compiled Language</strong>）：在程序运行前通过编译器将源代码转换为目标平台机器代码，并生成可执行文件的编程语言。</p><p><strong>解释型语言</strong>（<strong>Interpreted Language</strong>）：在程序运行时由解释器解析并执行源代码的编程语言，通常不提前生成机器码可执行文件。</p><p><strong>可执行文件</strong>（<strong>Executable File</strong>）：计算机可以直接运行的文件，其中包含已经转换成机器代码的程序。</p><p><strong>编译</strong>（<strong>Compilation</strong>）：把人类编写的源代码转换成计算机可以直接执行的机器代码的过程。</p> </div> </aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>维度</th><th>编译型语言</th><th>解释型语言</th></tr></thead><tbody><tr><td><strong>执行效率</strong></td><td>高。运行前已生成优化后的机器码，直接执行。</td><td>相对较低。每次运行需逐行解释，有运行时开销。</td></tr><tr><td><strong>开发效率</strong></td><td>较低。修改代码后需重新编译整个程序才能测试。</td><td>高。修改代码后可直接运行，支持交互式开发与调试。</td></tr><tr><td><strong>跨平台性</strong></td><td>较弱。可执行文件通常与特定操作系统和 CPU 架构绑定，需为不同平台单独编译。</td><td>强。只需目标平台安装对应的解释器，源代码可跨平台运行。</td></tr><tr><td><strong>错误检查</strong></td><td>编译阶段可发现大部分语法和类型错误。</td><td>语法错误可提前发现，但部分错误在运行时才暴露。</td></tr><tr><td><strong>部署与运行</strong></td><td>部署独立的可执行文件，无需编译器和源代码，便于闭源分发。</td><td>运行依赖解释器和源代码，部署简单但源代码需提供给用户。</td></tr><tr><td><strong>代表语言</strong></td><td>C、C++、Go、Rust。</td><td>Python、JavaScript、Ruby、PHP。</td></tr></tbody></table>
+<aside aria-label="思考" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>思考 </p> <div class="starlight-aside__content"> <p>解释型语言存在“编译”过程吗？</p> </div> </aside>
+<p>需要注意的是，现代编程语言的实现通常采用编译与解释的混合方式，例如 Java、Python 和 JavaScript 都使用 <strong>中间代码</strong> 或 <strong>即时编译</strong> 技术。</p>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note </p> <div class="starlight-aside__content"> <p><strong>中间代码</strong>（<strong>Intermediate Code</strong> / <strong>Intermediate Representation</strong>，简称 <strong>IR</strong>）：在源代码和最终机器代码之间的一种过渡形式的代码，用于表示程序的逻辑结构，便于编译器或虚拟机进一步处理和优化。</p><p><strong>即时编译</strong>（<strong>Just-In-Time Compilation</strong>，简称 <strong>JIT</strong>）是一种程序执行技术，它的核心思想是：在程序运行过程中，将部分代码动态编译成机器代码，从而提高运行效率。</p> </div> </aside>
+<div class="sl-heading-wrapper level-h3"><h3 id="常见编程语言">常见编程语言</h3><a class="sl-anchor-link" href="#常见编程语言"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “常见编程语言”</span></a></div>
+<p>机器码和汇编语言存在适用场景、可维护性和开发效率等多方面的弱势，大多数人选择采用高级语言进行编程。如果没有特别的要求，机器码和汇编语言不在我们考虑的范畴之内。</p>
+<p>截止到目前，已经发明了超过 1000 种高级语言，幸运的是，我们不用学会每一种语言才能开始编程，在 AI 帮助下，我们甚至不用完全学会一门编程语言就可以开始编程，即便没有 AI 的加持，很难说程序员在使用某一门语言编程时对该语言已经精通。</p>
+<aside aria-label="奇怪的知识" class="starlight-aside starlight-aside--note"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>奇怪的知识 </p> <div class="starlight-aside__content"> <p>1978 年，Brian Kernighan 和 Dennis Ritchie 出版了经典著作《The C Programming Language》（俗称 K&#x26;R C），书中第一个示例程序是:</p><div class="expressive-code"><link rel="stylesheet" href="/ai-coding-from-zero/_astro/ec.v4551.css"><script type="module" src="/ai-coding-from-zero/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="c"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">printf</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#ECC48D;--1:#984E4D">hello, world</span><span style="--0:#D9F5DD;--1:#111111">"</span><span style="--0:#D6DEEB;--1:#403F53">);</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="printf(&#x22;hello, world&#x22;);"><div></div></button></div></figure></div><p>这个程序的作用是在屏幕上打印出 <code dir="auto">hello, world</code>。由于这本书的影响巨大，“hello, world”成为了很多程序员的入门仪式。这一习惯也影响到了其他语言的教学，在学习一门新的语言时，往往也先学会在机器上显示 <code dir="auto">hello, world</code>(有时也写成 <code dir="auto">Hello, World!</code>)。</p><p><a href="https://github.com/">GitHub</a> 是程序员分享代码的地方，该网站的 <a href="https://github.com/leachim6/hello-world">leachim6/hello-world</a> 仓库分享了超过 1000 种编程语言的 <code dir="auto">Hello，World!</code> 写法。</p> </div> </aside>
+<p>下面列举了常见的应用类型的主流编程语言，在下表中可能有部分术语（如 <strong>跨平台</strong>、<strong>原生</strong> 等）和编程语言等名词不了解，术语会在后面的内容中展开介绍，编程语言是工具，在本教程暂时不会针对某一具体的编程语言进行教学，需要在和 AI 的协作中学习，如果有需要也可以查找对应语言的资料进行学习。</p>
+<p><strong>构建常见应用类型的主流编程语言</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>应用类型</th><th>主流编程语言</th></tr></thead><tbody><tr><td>命令行界面应用（CLI）</td><td>Go、Rust、Python、TypeScript/JavaScript、C++</td></tr><tr><td>桌面应用（跨平台）</td><td>TypeScript/JavaScript、Rust、Dart（Flutter）</td></tr><tr><td>桌面应用（原生）</td><td>C#、Swift、C++</td></tr><tr><td>移动应用（iOS 原生）</td><td>Swift</td></tr><tr><td>移动应用（Android 原生）</td><td>Kotlin</td></tr><tr><td>移动应用（跨平台）</td><td>Dart、TypeScript/JavaScript、Kotlin</td></tr><tr><td>Web 应用（前端）</td><td>TypeScript、JavaScript</td></tr><tr><td>Web 应用（后端）</td><td>TypeScript/JavaScript、Go、Java、Python、Rust</td></tr><tr><td>小程序</td><td>JavaScript、TypeScript</td></tr><tr><td>宿主应用</td><td>Swift、Kotlin</td></tr><tr><td>快应用</td><td>JavaScript、TypeScript</td></tr></tbody></table>
+<aside aria-label="小结" class="starlight-aside starlight-aside--tip"> <p class="starlight-aside__title" aria-hidden="true"> <svg aria-hidden="true" class="starlight-aside__icon astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path fill-rule="evenodd" d="M1.44 8.855v-.001l3.527-3.516c.34-.344.802-.541 1.285-.548h6.649l.947-.947c3.07-3.07 6.207-3.072 7.62-2.868a1.821 1.821 0 0 1 1.557 1.557c.204 1.413.203 4.55-2.868 7.62l-.946.946v6.649a1.845 1.845 0 0 1-.549 1.286l-3.516 3.528a1.844 1.844 0 0 1-3.11-.944l-.858-4.275-4.52-4.52-2.31-.463-1.964-.394A1.847 1.847 0 0 1 .98 10.693a1.843 1.843 0 0 1 .46-1.838Zm5.379 2.017-3.873-.776L6.32 6.733h4.638l-4.14 4.14Zm8.403-5.655c2.459-2.46 4.856-2.463 5.89-2.33.134 1.035.13 3.432-2.329 5.891l-6.71 6.71-3.561-3.56 6.71-6.711Zm-1.318 15.837-.776-3.873 4.14-4.14v4.639l-3.364 3.374Z" clip-rule="evenodd"/><path d="M9.318 18.345a.972.972 0 0 0-1.86-.561c-.482 1.435-1.687 2.204-2.934 2.619a8.22 8.22 0 0 1-1.23.302c.062-.365.157-.79.303-1.229.415-1.247 1.184-2.452 2.62-2.935a.971.971 0 1 0-.62-1.842c-.12.04-.236.084-.35.13-2.02.828-3.012 2.588-3.493 4.033a10.383 10.383 0 0 0-.51 2.845l-.001.016v.063c0 .536.434.972.97.972H2.24a7.21 7.21 0 0 0 .878-.065c.527-.063 1.248-.19 2.02-.447 1.445-.48 3.205-1.472 4.033-3.494a5.828 5.828 0 0 0 .147-.407Z"/></svg>小结 </p> <div class="starlight-aside__content"> <p>本节介绍了机器码、汇编语言和高级语言等概念，解释了什么是编译型语言和解释型语言，并介绍了常见应用类型的主流编程语言。</p><hr><p>本节涉及到的概念：<strong>中央处理器</strong>、<strong>指令集架构</strong>、<strong>机器码</strong>、<strong>程序</strong>、<strong>助记符</strong>、<strong>汇编语言</strong>、<strong>源代码</strong>、<strong>编程</strong>、<strong>高级语言</strong>、<strong>编译器</strong>、<strong>解释器</strong>、<strong>编译型语言</strong>、<strong>解释型语言</strong>、<strong>可执行文件</strong>、<strong>编译</strong>、<strong>中间代码</strong>、<strong>即时编译</strong>。</p><hr><p><strong>任务</strong></p><p>请根据自己的应用的形态了解相关的编程语言。</p> </div> </aside> </div> <footer class="sl-flex astro-uqaaqmfa"> <div class="meta sl-flex astro-uqaaqmfa"> <a href="https://github.com/stevending1st/ai-coding-from-zero/edit/main/src/content/docs/src/content/docs/basic/introduction-to-programming-languages.mdx" class="sl-flex print:hidden astro-erloqce2"><svg aria-hidden="true" class="astro-erloqce2 astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a>  </div> <div class="pagination-links print:hidden astro-fy3tujiu" dir="ltr"> <a href="/ai-coding-from-zero/basic/application-form/" rel="prev" class="astro-fy3tujiu"> <svg aria-hidden="true" class="astro-fy3tujiu astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-fy3tujiu"> Previous <br class="astro-fy3tujiu"> <span class="link-title astro-fy3tujiu">应用的交互方式和形态</span> </span> </a> <a href="/ai-coding-from-zero/basic/introduction-to-simple-code-reuse-techniques/" rel="next" class="astro-fy3tujiu"> <svg aria-hidden="true" class="astro-fy3tujiu astro-ulra4euv" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-fy3tujiu"> Next <br class="astro-fy3tujiu"> <span class="link-title astro-fy3tujiu">简单的代码复用技术简介</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
