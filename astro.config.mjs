@@ -41,7 +41,9 @@ export default defineConfig({
 				},
 				{
 					label: '专项篇',
-					items: [],
+					items: [
+						'specialized/git-basic'
+					],
 				}
 			],
 		}),

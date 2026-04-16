@@ -1,0 +1,227 @@
+---
+title: Git 基础
+description: 本节介绍 Git 的一些基础知识。
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+如果要使用工具进行版本管理，在当下的时间节点 [Git](https://git-scm.com/) 一定是个不错的选择。
+
+## Git 简介
+
+Linus 创建了著名的开源操作系统 Linux，这个系统的维护者来分布在全世界，如果需要修改代码，在 2002 年以前，需要把源码文件通过 diff 的方式发给 Linus，由 Linus 本人手动合并代码。
+
+这种方式效率较低，并且难以应对不断增长的代码规模。
+
+在当时，可用的版本控制工具要么性能较差、依赖网络，要么是商业软件，不完全符合开源社区的需求，于是他花了两周时间用 C 语言写了 Git。
+
+<Aside type="note" title="奇怪的知识">
+2002 年，由于代码规模不断扩大，Linux 项目开始使用商业版本控制系统 BitKeeper，并获得 BitMover 公司提供的免费授权。
+
+2005 年，开发 Samba 的 Andrew 尝试对 BitKeeper 协议进行逆向分析，导致 BitMover 收回了对 Linux 社区的免费使用权。
+
+随后，Linus 用两周时间使用 C 语言开发了一个分布式版本控制系统——Git。在一个月内，Linux 项目完成了向 Git 的迁移。
+</Aside>
+
+2008 年，GitHub 网站上线了，它为开源项目免费提供 Git 托管服务，大量项目开始迁移至 GitHub，Git 也因此迅速流行起来。
+
+## 安装
+
+Git 支持 Windows、macOS 和 Linux 等主流操作系统。
+
+可以参考官方安装文档，根据自己的系统选择对应的安装方式：https://git-scm.com/install
+
+安装完成后，可以在终端中执行以下命令验证是否安装成功：
+
+```bash
+git --version
+```
+
+## 初次运行 Git 的配置
+
+在第一次使用 Git 之前，需要进行基本配置，用于标识提交者身份。
+
+配置用户名和邮箱：
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+查看配置：
+```bash
+git config --list
+```
+
+## Git 的四大分区
+
+Git 将文件状态划分为以下几个区域（通常称为“三大区域”，在协作场景中也会包含远程仓库）：
+
+1. **工作区（Working Directory）**：工作区是用户在本地直接查看、编辑和操作文件的目录，是项目的实际文件状态所在位置。
+
+2. **暂存区 (Stage / Index)**：位于工作区（Working Directory）与本地仓库（Repository）之间的中间区域，用于存放即将被提交的文件变更内容。在该区域可以对工作区的修改进行筛选和组织，使用户可以有选择地将部分变更纳入下一次提交。
+
+3. **本地仓库 (Local Repository)**：本地仓库是位于本地设备上的 Git 数据库，用于记录项目的全部版本历史和变更信息，通常位于项目目录下的 `.git` 文件夹中。
+
+4. **远程仓库 (Remote Repository)**：远程仓库是存储在网络服务器上的 Git 仓库，用于与本地仓库进行版本同步（push / pull）以及多人协作开发。
+
+<Aside type="note">
+**工作区**（**Working Directory**）：在 Git 版本控制系统中，指项目在本地文件系统中的实际目录，用于存放当前正在编辑和使用的文件内容。
+
+**暂存区**（**Stage / Index**）：在 Git 版本控制系统中，指位于工作区与本地仓库之间的中间区域，用于临时保存已标记为将被提交的文件变更内容。
+
+**本地仓库**（**Local Repository**）：在 Git 版本控制系统中，指存储在本地计算机上的完整版本库，用于保存项目的所有提交历史、分支信息及版本数据。
+
+**远程仓库**（**Remote Repository**）：在 Git 版本控制系统中，指托管在远程服务器上的版本库，用于实现代码的共享、协作开发及版本同步。
+</Aside>
+
+## 分区之间的流转
+
+### 核心数据流（正向流转）
+
+工作区 → 暂存区 → 本地仓库 → 远程仓库
+
+| 操作方向 | 命令 | 说明 |
+| :--- | :--- | :--- |
+| 工作区 → 暂存区 | `git add <文件名>`<br/>`git add .` | 将指定文件或当前目录下的所有修改添加到暂存区。 |
+| 暂存区 → 本地仓库 | `git commit -m "信息"` | 将暂存区的内容提交到本地仓库，形成版本记录。 |
+| 本地仓库 → 远程仓库 | `git push` | 将本地的提交记录推送到远程仓库。 |
+| 远程仓库 → 本地仓库 | `git pull` | 从远程仓库获取更新（fetch），并合并（merge）到本地仓库，同时更新工作区。 |
+
+### 撤销与回退流转
+
+`git reset` 本质上是对 HEAD、暂存区和工作区进行不同程度的回退操作：
+
+| 操作方向 | 命令 | 说明 |
+| :--- | :--- | :--- |
+| 工作区 → 未修改状态 | `git restore <文件>` | 丢弃工作区修改（不可恢复），恢复到最近一次提交状态。 |
+| 暂存区 → 工作区 | `git restore --staged <文件>` | 取消暂存。文件从暂存区移除，修改保留在工作区。 |
+| 本地仓库 → 暂存区 | `git reset --soft <ID>` | 回退提交。HEAD 后退，修改保留在暂存区。 |
+| 本地仓库 → 工作区 | `git reset --mixed <ID>` | 回退并取消暂存（默认模式），修改保留在工作区。  |
+| 本地仓库 → 彻底覆盖 | `git reset --hard <ID>` | 彻底回退。HEAD 指针后退，丢弃所有后续修改。慎用！ |
+
+可以使用 `git status` 查看当前文件在各个分区中的状态。
+
+## Git 管理的忽略文件
+
+在项目中，有些文件或目录不需要被 Git 跟踪（track），例如 `node_modules` 目录。可以通过创建 `.gitignore` 文件来指定需要忽略的文件或目录。
+
+注意：`.gitignore` 只对未被跟踪的文件生效，已经被 Git 跟踪的文件需要先移除缓存（如使用 `git rm --cached`）。
+
+文件 .gitignore 的格式规范如下：
+- 所有空行或者以 # 开头的行都会被 Git 忽略。
+- 可以使用标准的 glob 模式匹配，它会递归地应用在整个工作区中。
+- 匹配模式可以以（/）开头防止递归。
+- 匹配模式可以以（/）结尾指定目录。
+- 要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。
+
+glob 是 shell 中常用的一种文件匹配规则（不同于正则表达式）：
+- `*`：匹配任意数量的字符
+- `?`：匹配单个字符
+- `[abc]`：匹配 a、b、c 中的任意一个
+- `[0-9]`：匹配 0 到 9 的任意一个数字
+- `**`：匹配任意层级的目录
+
+例如：`a/**/z` 可以匹配：`a/z`、`a/b/z`、`a/b/c/z`。
+
+下面是一个示例：
+```gitignore
+# .gitignore
+node_modules/
+dist/
+*.log
+.env
+```
+
+## 查看提交历史
+
+如果我们需要查看提交的记录，可以通过 `git log` 来查询。
+
+## Git 远程仓库（Remote Repository）
+
+远程仓库是托管在服务器上的 Git 仓库，用于代码共享和团队协作。
+
+常用操作：
+
+```bash
+git remote -v        # 查看远程仓库
+git remote add origin <地址>  # 添加远程仓库
+git push             # 推送代码到远程
+git push -u origin <分支名>  # 首次推送并建立关联
+git pull             # 拉取远程更新并合并到本地
+```
+
+常见的 Git 远程仓库有 GitHub、Gitee、GitCode 等。
+
+## 分支（Branch）
+
+分支是 Git 中用于**并行开发**的机制，可以在不影响主线代码的情况下进行功能开发或修复问题。
+
+### 常用操作
+
+```bash
+git branch            # 查看分支
+git branch <分支名>    # 创建分支
+git switch <分支名>    #（推荐）切换分支
+git checkout <分支名>  # （兼容旧写法）切换分支
+git branch -d <分支名> # 删除分支（安全）
+git branch -D <分支名> # 强制删除分支
+```
+
+### 远程分支
+
+远程分支是存储在远程仓库中的分支，用于团队协作和代码共享。
+
+```bash
+git branch -r   # 查看远程分支
+git branch -a   # 查看所有分支（本地 + 远程）
+```
+
+基于远程分支创建并跟踪本地分支：
+
+```bash
+git checkout -b <本地分支名> origin/<远程分支名>
+# 或
+git switch -c <本地分支名> origin/<远程分支名>
+```
+
+删除远程分支：
+```bash
+git push origin --delete <分支名>
+```
+
+## Git 钩子（Hooks）
+
+Git Hooks 是 Git 在特定操作发生时自动触发的自定义脚本机制。
+
+Git Hooks 默认位于仓库的 `.git/hooks` 目录下，需要手动创建或启用（并赋予执行权限）才会生效。Git Hooks 不会随仓库克隆（clone），需要在每个开发者本地单独配置。
+
+Git 钩子可以分为客户端（本地）和服务端（远程）：
+
+**客户端钩子 (Client-side Hooks)**
+
+| 钩子名称 | 触发时机 | 主要用途 |
+| :--- | :--- | :--- |
+| pre-commit | 执行 `git commit` 之前 | 最常用。用于代码风格检查 (Lint)、格式化、运行单元测试。如果脚本返回非零值，提交会被中断。 |
+| prepare-commit-msg | 启动编辑器生成提交信息之前 | 自动修改或补充默认的提交信息（例如自动添加任务 ID）。 |
+| commit-msg | 提交信息输入完成并保存后 | 验证提交信息的格式是否符合团队规范（如 Conventional Commits）。 |
+| post-commit | 提交完成后 | 用于发送通知、记录日志或触发本地后续操作（不影响提交结果）。 |
+| pre-push | 执行 `git push` 之前 | 在推送前执行，可用于运行测试或进行额外检查。 |
+| post-checkout | 执行 `git checkout` 或 `git switch` 后 | 用于在切换分支后执行自动化操作（如更新依赖、清理缓存等）。 |
+| post-merge | 执行 `git merge` 或 `git pull` 后 | 用于在合并后执行自动化操作（如安装依赖、更新环境）。 |
+| pre-rebase | 执行 `git rebase` 之前 | 检查是否允许变基，防止破坏性的历史重写。 |
+
+**服务端钩子 (Server-side Hooks)**
+
+服务端钩子通常运行在自建 Git 服务器或支持自定义 hooks 的平台上（如 GitLab、Gitea 等）。
+
+| 钩子名称 | 触发时机 | 主要用途 |
+| :--- | :--- | :--- |
+| pre-receive | 服务器接收到推送请求时 | 最常用。用于权限验证、分支保护（如禁止直接推送到 main 分支）。 |
+| update | 在 `pre-receive` 之后，针对每个分支 | 比 `pre-receive` 更细粒度，可针对具体分支或标签进行限制。  |
+| post-receive | 推送完成后 | 最常用。用于触发 CI/CD 流程、自动部署代码到生产环境、发送通知邮件。 |
+
+实际开发中，通常不会手动维护 Git Hooks，可以使用工具（如 Husky）来统一管理和分发 hooks 脚本，提高团队一致性。
+
+> 参考资料：
+> - [廖雪峰 Git 教程](https://liaoxuefeng.com/books/git)
+> - [Pro Git - 中文](https://git-scm.com/book/zh/v2)
